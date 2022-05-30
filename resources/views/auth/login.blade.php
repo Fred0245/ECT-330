@@ -43,6 +43,10 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
+
+                <a style="margin: 10px; color:blue" href="/"> créer un compte</a>
+
+
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                         {{ __('Mot de passe oublié ?') }}

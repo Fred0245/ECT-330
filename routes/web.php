@@ -17,9 +17,18 @@ Route::get('/', function () {
     return view('auth/register');
 });
 
-Route::get('/admin', function () {
-    return view('admin');
+Route::get('/c', function () {
+    return view('entreprises/create');
 });
+
+Route::get('/newAdmin', function () {
+    return view('newAdmin');
+});
+
+Route::get('/newEntreprise', function () {
+    return view('newEntreprise');
+});
+
 
 Route::get('/welcome', function () {
     return view('welcome');
@@ -28,5 +37,13 @@ Route::get('/welcome', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::resource("entreprises", EntrepriseController::class);
+
+Route::middleware(['auth','role:admin'])->group(function(){
+    Route::get('/admin', function () {
+        return view('admin');
+    });
+});
 
 require __DIR__.'/auth.php';
